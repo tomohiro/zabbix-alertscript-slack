@@ -1,2 +1,2 @@
-Zabbix Alerts Script for Slack
+Zabbix Alert Script for Slack
 ================================================================================
