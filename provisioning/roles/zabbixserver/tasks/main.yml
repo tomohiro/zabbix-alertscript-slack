@@ -1,0 +1,19 @@
+---
+- name: install dependencies for Zabbix
+  yum: name={{ item.name }} state=latest
+  with_items: dependencies
+- name: install Apache
+  yum: name=httpd
+  notify:
+  - restart httpd
+- name: Enable httpd
+  service: name=httpd state=started enabled=yes
+- name: install MariaDB
+  yum: name=mariadb-server
+  notify:
+  - restart mariadb
+- name: Enable mariadb
+  service: name=mariadb state=started enabled=yes
+- name: install Zabbix packages
+  yum: name={{ item.name }} state=latest
+  with_items: zabbix_packages
