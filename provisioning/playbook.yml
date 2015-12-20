@@ -1,0 +1,19 @@
+---
+- hosts: all
+  sudo: yes
+  vars:
+    dependencies:
+      - name: epel-release
+      - name: httpd
+      - name: mariadb
+    zabbix_packages:
+      - name: zabbix22-server-mysql
+      - name: zabbix22-web-mysql
+      - name: zabbix22-agent
+  tasks:
+    - name: install dependencies for Zabbix
+      yum: name={{ item.name }} state=latest
+      with_items: dependencies
+    - name: install Zabbix packages
+      yum: name={{ item.name }} state=latest
+      with_items: zabbix_packages
