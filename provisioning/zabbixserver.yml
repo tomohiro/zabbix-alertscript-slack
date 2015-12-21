@@ -2,4 +2,6 @@
 - hosts: all
   sudo: yes
   roles:
+    - common
     - zabbixserver
+    - zabbixagent

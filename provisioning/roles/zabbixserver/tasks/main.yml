@@ -1,7 +1,4 @@
 ---
-- name: install dependencies for Zabbix
-  yum: name={{ item.name }} state=latest
-  with_items: dependencies
 - name: install Apache
   yum: name=httpd
   notify:
@@ -17,3 +14,7 @@
 - name: install Zabbix packages
   yum: name={{ item.name }} state=latest
   with_items: zabbix_packages
+  notify:
+  - restart zabbix server
+- name: enable zabbix-server
+  service: name=zabbix-server-mysql state=started enabled=yes

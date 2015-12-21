@@ -2,4 +2,3 @@
 zabbix_packages:
   - name: zabbix22-server-mysql
   - name: zabbix22-web-mysql
-  - name: zabbix22-agent

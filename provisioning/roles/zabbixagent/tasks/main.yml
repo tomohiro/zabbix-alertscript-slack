@@ -1,0 +1,5 @@
+---
+- name: install Zabbix Agent
+  yum: name=zabbix22-agent
+  notify:
+  - restart zabbix_agent

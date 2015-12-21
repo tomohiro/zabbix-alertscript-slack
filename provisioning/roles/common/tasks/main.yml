@@ -1,0 +1,4 @@
+---
+- name: install dependencies
+  yum: name={{ item.name }} state=latest
+  with_items: dependencies
