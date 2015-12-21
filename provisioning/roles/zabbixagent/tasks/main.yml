@@ -3,3 +3,5 @@
   yum: name=zabbix22-agent
   notify:
   - restart zabbix_agent
+- name: enable zabbix agent
+  service: name=zabbix-agent state=started enabled=yes
