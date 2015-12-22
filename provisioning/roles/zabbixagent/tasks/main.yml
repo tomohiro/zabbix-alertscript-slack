@@ -1,7 +1,7 @@
 ---
-- name: install Zabbix Agent
-  yum: name=zabbix22-agent
+- name: install the latest version of zabbix-agent
+  yum: name=zabbix22-agent state=latest
   notify:
-  - restart zabbix_agent
-- name: enable zabbix agent
+  - restart the zabbix-agent
+- name: start and enable service zabbix agent
   service: name=zabbix-agent state=started enabled=yes

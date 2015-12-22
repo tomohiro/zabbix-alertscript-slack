@@ -1,7 +1,7 @@
 ---
-- name: restart httpd
+- name: restart service httpd
   service: name=httpd state=restarted
-- name: restart mariadb
+- name: restart service mariadb
   service: name=mariadb state=restarted
-- name: restart zabbix server
+- name: restart service zabbix-server
   service: name=zabbix-server state=restarted

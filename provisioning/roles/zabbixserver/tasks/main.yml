@@ -1,20 +1,22 @@
 ---
-- name: install Apache
+- name: install the latest version of Apache
   yum: name=httpd
   notify:
-  - restart httpd
-- name: Enable httpd
+  - restart the httpd
+- name: start and enable service httpd
   service: name=httpd state=started enabled=yes
-- name: install MariaDB
+
+- name: install the latest version of MariaDB
   yum: name=mariadb-server
   notify:
-  - restart mariadb
-- name: Enable mariadb
+  - restart the mariadb
+- name: start and enable service mariadb
   service: name=mariadb state=started enabled=yes
-- name: install Zabbix packages
+
+- name: install the latest version of Zabbix server packages
   yum: name={{ item.name }} state=latest
   with_items: zabbix_packages
   notify:
   - restart zabbix server
-- name: enable zabbix-server
-  service: name=zabbix-server-mysql state=started enabled=yes
+- name: start and enable service zabbix-server
+  service: name=zabbix-server-mysql state=started enabled=no
