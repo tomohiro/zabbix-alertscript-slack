@@ -1,2 +1,5 @@
 # Vagrant
 .vagrant
+
+# Direnv
+.envrc
