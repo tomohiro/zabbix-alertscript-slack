@@ -8,8 +8,8 @@ Initialize the database for Zabbix
 Create a database:
 
 ```
-$ sudo mysqladmin --default-character-set=utf8 create zabbix
-$ echo "grant all on zabbix.* to 'zabbix'@'localhost' identified by 'zabbix';" | mysql -uroot zabbix
+$ mysqladmin -u root --default-character-set=utf8 create zabbix
+$ echo "grant all on zabbix.* to 'zabbix'@'localhost' identified by 'zabbix';" | mysql -u root zabbix
 ```
 
 Import the initial data:
