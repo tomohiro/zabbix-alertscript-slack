@@ -18,6 +18,13 @@ if [ -z "$SLACK_WEBHOOK_URL" ]; then
   exit 1
 fi
 
+function extract-tag() {
+    local message=$1
+    local tag=$2
+    echo "${message}" | awk -F "${tag}: " '{ print $2 }' | tr -d '\012'
+}
+
+
 webhook_url="${SLACK_WEBHOOK_URL}"
 username="zabbix"
 channel="$1"
