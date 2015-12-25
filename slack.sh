@@ -13,12 +13,12 @@
 #   Custom alertscripts document
 #   https://www.zabbix.com/documentation/2.4/manual/config/notifications/media/script
 
-if [ -z "$SLACK_WEBHOOK_TOKEN" ]; then
-  echo 'Please set the Slack webhook token to `SLACK_WEBHOOK_TOKEN`.'
+if [ -z "$SLACK_WEBHOOK_URL" ]; then
+  echo 'Please set the Slack webhook url to `SLACK_WEBHOOK_URL`.'
   exit 1
 fi
 
-webhook_url="https://hooks.slack.com/services/${SLACK_WEBHOOK_TOKEN}"
+webhook_url="${SLACK_WEBHOOK_URL}"
 username="zabbix"
 channel="$1"
 subject="$2"

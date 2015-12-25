@@ -1,1 +1,1 @@
-export SLACK_WEBHOOK_TOKEN=""
+export SLACK_WEBHOOK_URL=""
