@@ -20,3 +20,6 @@
   - restart zabbix server
 - name: start and enable service zabbix-server
   service: name=zabbix-server-mysql state=started enabled=no
+
+- name: initialize zabbix database
+  script: "{{ playbook_dir }}/roles/zabbixserver/files/initialize.sh"
