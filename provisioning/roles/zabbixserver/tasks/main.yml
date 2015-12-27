@@ -13,11 +13,11 @@
 - name: start and enable service mariadb
   service: name=mariadb state=started enabled=yes
 - name: find out the zabbix database
-  command: 'mysql -u root -e "SHOW DATABASES;"'
+  command: mysql -u root -e 'SHOW DATABASES;'
   register: databases
   changed_when: false
 - name: initialize zabbix database
-  script: "{{ playbook_dir }}/roles/zabbixserver/files/initialize.sh"
+  script: roles/zabbixserver/files/initialize.sh
   when: databases.stdout.find('zabbix') == -1
 
 - name: install the latest version of Zabbix server packages
