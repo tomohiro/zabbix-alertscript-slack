@@ -12,6 +12,12 @@
   - restart the mariadb
 - name: start and enable service mariadb
   service: name=mariadb state=started enabled=yes
+- name: find out the zabbix database
+  command: 'mysql -u root -e "SHOW DATABASES;"'
+  register: databases
+- name: initialize zabbix database
+  script: "{{ playbook_dir }}/roles/zabbixserver/files/initialize.sh"
+  when: databases.stdout.find('zabbix') == -1
 
 - name: install the latest version of Zabbix server packages
   yum: name={{ item.name }} state=latest
@@ -20,6 +26,3 @@
   - restart zabbix server
 - name: start and enable service zabbix-server
   service: name=zabbix-server-mysql state=started enabled=no
-
-- name: initialize zabbix database
-  script: "{{ playbook_dir }}/roles/zabbixserver/files/initialize.sh"
