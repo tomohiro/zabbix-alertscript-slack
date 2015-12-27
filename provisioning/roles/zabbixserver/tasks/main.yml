@@ -2,14 +2,14 @@
 - name: install the latest version of Apache
   yum: name=httpd
   notify:
-  - restart the httpd
+  - restart service httpd
 - name: start and enable service httpd
   service: name=httpd state=started enabled=yes
 
 - name: install the latest version of MariaDB
   yum: name=mariadb-server
   notify:
-  - restart the mariadb
+  - restart service mariadb
 - name: start and enable service mariadb
   service: name=mariadb state=started enabled=yes
 - name: find out the zabbix database
@@ -24,6 +24,20 @@
   yum: name={{ item.name }} state=latest
   with_items: zabbix_packages
   notify:
-  - restart zabbix server
+  - restart service zabbix-server
+- name: deploy php configuration
+  copy: src=roles/zabbixserver/files/php.ini dest=/etc/php.ini
+  notify:
+  - restart service httpd
+- name: deploy zabbix web configuration
+  copy: >
+    src=roles/zabbixserver/files/zabbix.conf.php
+    dest=/etc/zabbix/web/zabbix.conf.php
+- name: deploy zabbix server configuration
+  copy: >
+    src=roles/zabbixserver/files/zabbix_server.conf
+    dest=/etc/zabbix_server.conf
+  notify:
+  - restart service zabbix-server
 - name: start and enable service zabbix-server
   service: name=zabbix-server-mysql state=started enabled=no
