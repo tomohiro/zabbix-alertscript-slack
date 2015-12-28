@@ -1,4 +1,7 @@
 ---
+- name: disable state of SELinux
+  selinux: state=disabled
+
 - name: install the latest version of Apache
   yum: name=httpd
   notify:
