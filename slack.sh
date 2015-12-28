@@ -54,7 +54,7 @@ host=$(extract-tag "${message}" 'Host conn')
 event_id=$(extract-tag "${message}" 'Event ID')
 trigger=$(extract-tag "${message}" 'Trigger')
 trigger_id=$(extract-tag "${message}" 'Trigger ID')
-url="https://${host}/tr_events.php?trigger_id=${trigger_id}&event_id=${event_id}"
+url="https://${host}/tr_events.php?triggerid=${trigger_id}&eventid=${event_id}"
 
 status=$(extract-tag "${message}" 'Trigger status')
 severity=$(extract-tag "${message}" 'Trigger severity')
