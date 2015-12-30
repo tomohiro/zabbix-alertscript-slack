@@ -1,1 +1,2 @@
 export SLACK_WEBHOOK_URL=""
+export ZABBIX_ENDPOINT=""

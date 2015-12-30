@@ -18,6 +18,12 @@ if [ -z "$SLACK_WEBHOOK_URL" ]; then
   exit 1
 fi
 
+if [ -z "$ZABBIX_ENDPOINT" ]; then
+  echo 'Please set the Zabbix server url to `ZABBIX_ENDPOINT`.'
+  exit 1
+fi
+
+
 extract-tag() {
   local message=$1
   local tag=$2
@@ -50,11 +56,10 @@ channel="$1"
 subject="$2"
 message="$3"
 
-host=$(extract-tag "${message}" 'Host conn')
 event_id=$(extract-tag "${message}" 'Event ID')
 trigger=$(extract-tag "${message}" 'Trigger')
 trigger_id=$(extract-tag "${message}" 'Trigger ID')
-url="https://${host}/tr_events.php?triggerid=${trigger_id}&eventid=${event_id}"
+url="${ZABBIX_ENDPOINT}/tr_events.php?triggerid=${trigger_id}&eventid=${event_id}"
 
 status=$(extract-tag "${message}" 'Trigger status')
 severity=$(extract-tag "${message}" 'Trigger severity')
