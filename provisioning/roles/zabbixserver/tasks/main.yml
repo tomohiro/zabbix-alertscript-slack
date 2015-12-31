@@ -36,6 +36,12 @@
   copy: >
     src=roles/zabbixserver/files/zabbix.conf.php
     dest=/etc/zabbix/web/zabbix.conf.php
+- name: create a zabbix server directory
+  file: path=/etc/systemd/system/zabbix-server.service.d state=directory
+- name: deploy zabbix service environment variables
+  copy: >
+    src=roles/zabbixserver/files/10-environment.conf
+    dest=/etc/systemd/system/zabbix-server.service.d/10-environment.conf
 - name: deploy zabbix server configuration
   copy: >
     src=roles/zabbixserver/files/zabbix_server.conf
