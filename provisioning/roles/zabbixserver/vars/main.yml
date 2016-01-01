@@ -2,3 +2,5 @@
 zabbix_packages:
   - name: zabbix22-server-mysql
   - name: zabbix22-web-mysql
+zabbix_endpoint: http://localhost:10080/zabbix
+slack_webhook_url: https://example.com
