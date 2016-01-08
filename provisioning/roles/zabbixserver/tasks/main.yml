@@ -4,15 +4,13 @@
 
 - name: install the latest version of Apache
   yum: name=httpd
-  notify:
-  - restart service httpd
+  notify: restart service httpd
 - name: start and enable service httpd
   service: name=httpd state=started enabled=yes
 
 - name: install the latest version of MariaDB
   yum: name=mariadb-server
-  notify:
-  - restart service mariadb
+  notify: restart service mariadb
 - name: start and enable service mariadb
   service: name=mariadb state=started enabled=yes
 - name: find out the zabbix database
@@ -26,12 +24,10 @@
 - name: install the latest version of Zabbix server packages
   yum: name={{ item.name }} state=latest
   with_items: zabbix_packages
-  notify:
-  - restart service zabbix-server
+  notify: restart service zabbix-server
 - name: deploy php configuration
   copy: src=roles/zabbixserver/files/php.ini dest=/etc/php.ini
-  notify:
-  - restart service httpd
+  notify: restart service httpd
 - name: deploy zabbix web configuration
   copy: >
     src=roles/zabbixserver/files/zabbix.conf.php
@@ -39,14 +35,14 @@
 - name: create a zabbix server directory
   file: path=/etc/systemd/system/zabbix-server.service.d state=directory
 - name: deploy zabbix service environment variables
-  copy: >
-    src=roles/zabbixserver/files/10-environment.conf
+  template: >
+    src=roles/zabbixserver/templates/10-environment.conf.j2
     dest=/etc/systemd/system/zabbix-server.service.d/10-environment.conf
+  notify: restart service zabbix-server
 - name: deploy zabbix server configuration
   copy: >
     src=roles/zabbixserver/files/zabbix_server.conf
     dest=/etc/zabbix_server.conf
-  notify:
-  - restart service zabbix-server
+  notify: restart service zabbix-server
 - name: start and enable service zabbix-server
   service: name=zabbix-server-mysql state=started enabled=no

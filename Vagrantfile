@@ -12,6 +12,10 @@ Vagrant.configure(2) do |config|
   config.vm.network :forwarded_port, guest: 80, host: 10080
 
   config.vm.provision 'ansible' do |ansible|
-    ansible.playbook = 'provisioning/site.yml'
+    ansible.playbook   = 'provisioning/site.yml'
+    ansible.extra_vars = {
+      zabbix_endpoint: 'http://localhost:10080/zabbix',
+      slack_webhook_url: ENV['SLACK_WEBHOOK_URL']
+    }
   end
 end
