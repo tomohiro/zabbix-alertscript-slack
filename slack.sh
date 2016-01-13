@@ -66,7 +66,7 @@ severity=$(extract-tag "${message}" 'Trigger severity')
 item_name=$(extract-tag "${message}" 'Item name')
 item_value=$(extract-tag "${message}" 'Item value')
 datetime=$(extract-tag "${message}" 'DateTime')
-domain=$(extract-tag "${message}" 'Domain')
+host=$(extract-tag "${message}" 'Host')
 address=$(extract-tag "${message}" 'IP address')
 
 color=$(triage "${status}" "${severity}")
@@ -80,8 +80,8 @@ payload="payload={
       \"color\": \"${color}\",
       \"fields\": [
         {
-          \"title\": \"Domain\",
-          \"value\": \"${domain}\",
+          \"title\": \"Host\",
+          \"value\": \"${host}\",
           \"short\": true
         },
         {
@@ -100,8 +100,8 @@ payload="payload={
           \"short\": true
         },
         {
-          \"title\": \"${item_name}\",
-          \"value\": \"${item_value}\",
+          \"title\": \"Item\",
+          \"value\": \"${item_name} is ${item_value}\",
           \"short\": true
         },
         {
