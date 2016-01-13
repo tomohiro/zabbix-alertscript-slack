@@ -27,7 +27,7 @@ fi
 extract-tag() {
   local message=$1
   local tag=$2
-  echo "${message}" | awk -F "${tag}: " '{ print $2 }' | tr -d '\012'
+  echo "${message}" | awk -F "${tag}: " '{ print $2 }' | tr -d '\r\n'
 }
 
 triage() {
