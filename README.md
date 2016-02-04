@@ -43,6 +43,19 @@ $ sudo echo 'export ZABBIX_ENDPOINT=http://your-zabbix.example.com' >> /etc/sysc
 $ sudo service zabbix-server restart
 ```
 
+CentOS 7:
+
+```sh
+$ suod mkdir /etc/systemd/system/zabbix-server.service.d/
+$ sudo cat <<EOF > /etc/systemd/system/zabbix-server.service.d/10-environment.conf
+[Service]
+Environment=ZABBIX_ENDPOINT='http://your-zabbix.example.com'
+Environment=SLACK_WEBHOOK_URL='https://hooks.slack.com/services/....'
+EOF
+$ sudo systemctl restart zabbix-server
+```
+
+
 Register installed script to a media type:
 
 ![default mesasge](images/zabbix-media.png)
