@@ -7,7 +7,7 @@ Zabbix Alert Script for Slack
 Requirements
 --------------------------------------------------------------------------------
 
-- Zabbix 2.2 or later
+- Zabbix 2.2 LTS, 3.0 LTS
 - Slack [Incoming Webhook URL](https://api.slack.com/incoming-webhooks)
 
 
@@ -94,6 +94,6 @@ Acknowledgements
 LICENSE
 --------------------------------------------------------------------------------
 
-&copy; 2015 Tomohiro TAIRA.
+&copy; 2015 - 2016 Tomohiro TAIRA.
 
 This project is licensed under the MIT license. See [LICENSE](LICENSE) for details.
