@@ -49,8 +49,8 @@ CentOS 7:
 $ suod mkdir /etc/systemd/system/zabbix-server.service.d/
 $ sudo cat <<EOF > /etc/systemd/system/zabbix-server.service.d/10-environment.conf
 [Service]
-Environment=ZABBIX_ENDPOINT='http://your-zabbix.example.com'
-Environment=SLACK_WEBHOOK_URL='https://hooks.slack.com/services/....'
+Environment=ZABBIX_ENDPOINT=http://your-zabbix.example.com
+Environment=SLACK_WEBHOOK_URL=https://hooks.slack.com/services/....
 EOF
 $ sudo systemctl restart zabbix-server
 ```
