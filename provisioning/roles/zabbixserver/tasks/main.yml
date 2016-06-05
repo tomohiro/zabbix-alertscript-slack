@@ -31,7 +31,7 @@
 # Zabbix
 - name: install the latest version of Zabbix server packages
   yum: name={{ item.name }} state=latest
-  with_items: zabbix_packages
+  with_items: '{{ zabbix_packages }}'
   notify: restart service zabbix-server
 
 - name: deploy php configuration
