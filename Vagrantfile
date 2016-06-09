@@ -12,6 +12,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision 'ansible_local' do |ansible|
     ansible.playbook          = '/home/vagrant/sync/provisioning/site.yml'
     ansible.provisioning_path = '/home/vagrant/sync/provisioning'
+    ansible.galaxy_role_file  = '/home/vagrant/sync/provisioning/requirements.yml'
     ansible.extra_vars = {
       zabbix_endpoint: 'http://localhost:10080/zabbix',
       slack_webhook_url: ENV['SLACK_WEBHOOK_URL']
