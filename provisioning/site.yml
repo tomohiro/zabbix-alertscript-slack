@@ -1,2 +1,2 @@
 ---
-- include: zabbixserver.yml
+- include: zabbixservers.yml

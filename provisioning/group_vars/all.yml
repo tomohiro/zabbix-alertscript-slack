@@ -1,0 +1,11 @@
+---
+# Zabbix server configuration - https://galaxy.ansible.com/dj-wasabi/zabbix-server/
+zabbix_url: localhost
+zabbix_version: 3.0
+zabbix_timezone: Asia/Tokyo
+database_type: mysql
+database_type_long: mysql
+
+# Zabbix agent configuration - https://galaxy.ansible.com/dj-wasabi/zabbix-agent/
+agent_server: localhost
+agent_serveractive: localhost
