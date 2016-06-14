@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: yes
+  roles:
+    - selinux
+    - geerlingguy.mysql
+    - dj-wasabi.zabbix-server
+    - dj-wasabi.zabbix-agent
