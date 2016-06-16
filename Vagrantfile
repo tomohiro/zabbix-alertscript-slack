@@ -10,6 +10,8 @@ Vagrant.configure(2) do |config|
   config.vm.network :forwarded_port, guest: 80, host: 10080
 
   config.vm.provision 'ansible_local' do |ansible|
+    ansible.inventory_path    = '/home/vagrant/sync/provisioning/inventory'
+    ansible.limit             = 'all'
     ansible.playbook          = '/home/vagrant/sync/provisioning/site.yml'
     ansible.provisioning_path = '/home/vagrant/sync/provisioning'
     ansible.galaxy_role_file  = '/home/vagrant/sync/provisioning/requirements.yml'
