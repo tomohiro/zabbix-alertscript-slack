@@ -6,3 +6,4 @@
     - geerlingguy.mysql
     - dj-wasabi.zabbix-server
     - dj-wasabi.zabbix-agent
+    - zabbix-alertscript-slack
