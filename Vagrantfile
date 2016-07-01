@@ -5,11 +5,18 @@ Vagrant.configure(2) do |config|
   config.vm.box      = 'centos/7'
   config.vm.hostname = 'zabbix-server'
 
+  # Set auto_update to false, if you do NOT want to check the correct
+  # additions version when booting this machine
+  #   https://github.com/dotless-de/vagrant-vbguest
+  if Vagrant.has_plugin? 'vagrant-vbguest'
+    config.vbguest.auto_update = false
+  end
+
   # Disable rsync synced folder configuration at centos/7 Vagrantfile.
   config.vm.synced_folder '.', '/home/vagrant/sync', disabled: true
 
   # Enable virtualbox synced folder configuration to /etc/ansible
-  config.vm.synced_folder './provisioning', '/etc/ansible', type: 'virtualbox'
+  config.vm.synced_folder './provisioning', '/etc/ansible'
 
   # Port fowarding port 80 to 10080.
   # You can access to the Zabbix web console via http://localhost:10080/zabbix
