@@ -46,7 +46,7 @@ $ sudo service zabbix-server restart
 CentOS 7:
 
 ```sh
-$ suod mkdir /etc/systemd/system/zabbix-server.service.d/
+$ sudo mkdir /etc/systemd/system/zabbix-server.service.d/
 $ sudo cat <<EOF > /etc/systemd/system/zabbix-server.service.d/10-environment.conf
 [Service]
 Environment=ZABBIX_ENDPOINT=http://your-zabbix.example.com
